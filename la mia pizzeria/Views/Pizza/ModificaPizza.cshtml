@@ -35,6 +35,11 @@
             </select>
             <span asp-validation-for="Pizza.CategoriaNome" class="text-danger"></span>
         </div>
+        <div class="mb-3">
+            <label>Ingredienti:</label>
+            <select asp-for="ListaIdIngredienti" asp-items="@Model.ListaIngredienti" multiple size="10" class="form-control mb-2 mr-sm-2 ml-sm-3 leftList">
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

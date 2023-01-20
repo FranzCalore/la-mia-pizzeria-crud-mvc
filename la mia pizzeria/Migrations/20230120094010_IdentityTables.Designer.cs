@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using la_mia_pizzeria.Database;
 
@@ -11,9 +12,11 @@ using la_mia_pizzeria.Database;
 namespace lamiapizzeria.Migrations
 {
     [DbContext(typeof(PizzeriaContext))]
-    partial class PizzeriaContextModelSnapshot : ModelSnapshot
+    [Migration("20230120094010_IdentityTables")]
+    partial class IdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,19 +25,19 @@ namespace lamiapizzeria.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("IngredientePizza", b =>
+            modelBuilder.Entity("CondimentoExtraPizza", b =>
                 {
-                    b.Property<int>("IngredientiIngredienteId")
+                    b.Property<int>("CondimentiExtraCondimentoId")
                         .HasColumnType("int");
 
                     b.Property<int>("PizzeConditeId")
                         .HasColumnType("int");
 
-                    b.HasKey("IngredientiIngredienteId", "PizzeConditeId");
+                    b.HasKey("CondimentiExtraCondimentoId", "PizzeConditeId");
 
                     b.HasIndex("PizzeConditeId");
 
-                    b.ToTable("IngredientePizza");
+                    b.ToTable("CondimentoExtraPizza");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -245,21 +248,24 @@ namespace lamiapizzeria.Migrations
                     b.ToTable("Categorie");
                 });
 
-            modelBuilder.Entity("la_mia_pizzeria.Models.Ingrediente", b =>
+            modelBuilder.Entity("la_mia_pizzeria.Models.CondimentoExtra", b =>
                 {
-                    b.Property<int>("IngredienteId")
+                    b.Property<int>("CondimentoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IngredienteId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CondimentoId"));
 
                     b.Property<string>("Condimento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IngredienteId");
+                    b.Property<double>("PrezzoCondimento")
+                        .HasColumnType("float");
 
-                    b.ToTable("Ingredienti");
+                    b.HasKey("CondimentoId");
+
+                    b.ToTable("CondimentiExtra");
                 });
 
             modelBuilder.Entity("la_mia_pizzeria.Models.Pizza", b =>
@@ -296,11 +302,11 @@ namespace lamiapizzeria.Migrations
                     b.ToTable("Pizze");
                 });
 
-            modelBuilder.Entity("IngredientePizza", b =>
+            modelBuilder.Entity("CondimentoExtraPizza", b =>
                 {
-                    b.HasOne("la_mia_pizzeria.Models.Ingrediente", null)
+                    b.HasOne("la_mia_pizzeria.Models.CondimentoExtra", null)
                         .WithMany()
-                        .HasForeignKey("IngredientiIngredienteId")
+                        .HasForeignKey("CondimentiExtraCondimentoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

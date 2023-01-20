@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="~/la_mia_pizzeria.styles.css" asp-append-version="true" />
 </head>
 <body>
-        <header>
-            <nav class="navbar sticky-top">
-                <div class="container-fluid justify-content-center">
-                    <a href="/"><img class="img-fluid" src="/img/Title.png" width="250" height="100"/></a>
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid text-center">
+                    <div class="col-2" style="min-height:1px"></div>
+                    <div clss="col-6">
+                        <a href="/"><img class="img-fluid" src="/img/Title.png" width="250" height="100" /></a>
+                    </div>
+                    <div class="col-2 align-self-start text-end">
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
-            </nav>
+            </div>
+
+        </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

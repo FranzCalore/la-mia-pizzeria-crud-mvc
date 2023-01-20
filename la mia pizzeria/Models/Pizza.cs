@@ -25,6 +25,8 @@ namespace la_mia_pizzeria.Models
         [ForeignKey("Categoria")]
         public string CategoriaNome { get; set; }
 
+        public List<Ingrediente>? Ingredienti { get; set; }
+
         public Pizza()
         {
 

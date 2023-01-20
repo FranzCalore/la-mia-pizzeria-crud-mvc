@@ -4,33 +4,35 @@
 {
     <h3>Non sono presenti pizze a listino, ci scusiamo per il disagio</h3>
 }
-
-<main class="container">
-    <h1>Il nostro olimpo</h1>
-    <table class="table table-hover my-5">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col"></th>
-                <th scope="col">Descrizione</th>
-                <th scope="col">Prezzo</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Pizza pizza in Model)
-            {
+else
+{
+    <main class="container">
+        <h1>Il nostro olimpo</h1>
+        <table class="table table-hover my-5">
+            <thead>
                 <tr>
-                    <td><a href="@Url.Action("Dettagli","Pizza",new{ID=pizza.Id})">@pizza.Nome</a></td>
-                    <td><img src="@pizza.Immagine" class="img-fluid" alt="@pizza.Nome" width="300"></td>
-                    <td>@pizza.Descrizione</td>
-                    <td>@pizza.Prezzo €</td>
-                    <td><a class="btn btn-primary" href="@Url.Action("ModificaPizza","Pizza", new{ID=pizza.Id})">Modifica Pizza</a></td>
-                    <td><a class="btn btn-danger" href="@Url.Action("EliminaPizza","Pizza", new{ID=pizza.Id})">Elimina Pizza</a></td>
+                    <th scope="col">Nome</th>
+                    <th scope="col"></th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Prezzo</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    <a class="btn btn-primary" href="@Url.Action("NuovaPizza","Pizza")">Aggiungi Pizza</a>
-</main>
+            </thead>
+            <tbody>
+                @foreach (Pizza pizza in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Dettagli","Pizza",new{ID=pizza.Id})">@pizza.Nome</a></td>
+                        <td><img src="@pizza.Immagine" class="img-fluid" alt="@pizza.Nome" width="300"></td>
+                        <td>@pizza.Descrizione</td>
+                        <td>@pizza.Prezzo €</td>
+                        <td><a class="btn btn-primary" href="@Url.Action("ModificaPizza","Pizza", new{ID=pizza.Id})">Modifica Pizza</a></td>
+                        <td><a class="btn btn-danger" href="@Url.Action("EliminaPizza","Pizza", new{ID=pizza.Id})">Elimina Pizza</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="@Url.Action("NuovaPizza","Pizza")">Aggiungi Pizza</a>
+    </main>
+}
