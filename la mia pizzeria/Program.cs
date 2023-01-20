@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
-app.MapRazorPages();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -34,5 +34,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Pizza}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
